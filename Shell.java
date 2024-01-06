@@ -50,7 +50,7 @@ public class Shell extends Thread
 	    // now args[] got "cmd1 arg ... ;or& cmd2 arg ... ;or& ...
             int first = 0;
             for ( int i = 0; i < args.length; i++ ) {
-                if ( args[i].equals( ";" ) || args[i].equals( "&" )
+                if ( ";".equals (args[i] ) || "&".equals (args[i] )
                      || i == args.length - 1 ) { // keep scanning till the next delim.
                     String[] command = generateCmd( args, first, 
                                                     ( i==args.length - 1 ) ? 
@@ -60,7 +60,7 @@ public class Shell extends Thread
                     if ( command != null ) {
 			// HW1B: You only need to write your code in this if statement!
 			// Check if command[0] is “exit”. If so, get terminated
-                        if(command[0].equals("exit")){
+                        if("exit".equals(command[0])){
                             // Calling exit() function to terminate
                             SysLib.exit();
                             // to exit the loop directly whenever command "exit" spotted
@@ -73,7 +73,7 @@ public class Shell extends Thread
                             SysLib.exec(command);
                         }
             // if aergs[i] is “&” don’t call SysLib.join( ).
-                        if(args[i].equals("&")){
+                        if("&".equals(args[i])){
                             // nothing is done here, just need to continue through the loop
                             continue;
                         }
